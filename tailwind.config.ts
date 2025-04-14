@@ -72,7 +72,9 @@ export default {
 					"light-blue": "#3498DB",
 					"purple": "#8B5CF6",
 					"light": "#F5F8FA",
-					"dark": "#1A202C"
+					"dark": "#1A202C",
+					"education": "#E5DEFF", // Light purple for education section
+					"achievements": "#FFDEE2" // Light pink for achievements section
 				}
 			},
 			borderRadius: {

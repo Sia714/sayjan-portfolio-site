@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
 import { cn } from '@/lib/utils';
+import DarkModeToggle from './DarkModeToggle';
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -32,11 +33,13 @@ const Header = () => {
     <header 
       className={cn(
         'fixed top-0 left-0 right-0 z-50 transition-all duration-300',
-        scrolled ? 'bg-white shadow-md py-2' : 'bg-transparent py-4'
+        scrolled 
+          ? 'bg-white dark:bg-gray-900 shadow-md py-2' 
+          : 'bg-transparent dark:bg-transparent py-4'
       )}
     >
       <div className="container mx-auto px-4 flex justify-between items-center">
-        <a href="#home" className="text-xl md:text-2xl font-bold text-portfolio-blue">
+        <a href="#home" className="text-xl md:text-2xl font-bold text-portfolio-blue dark:text-white">
           Sayjan J Singh
         </a>
 
@@ -46,31 +49,35 @@ const Header = () => {
             <a 
               key={link.name}
               href={link.href}
-              className="font-medium hover:text-portfolio-purple transition-colors"
+              className="font-medium dark:text-gray-300 hover:text-portfolio-purple dark:hover:text-portfolio-purple transition-colors"
             >
               {link.name}
             </a>
           ))}
+          <DarkModeToggle />
         </nav>
 
         {/* Mobile Menu Button */}
-        <button 
-          className="md:hidden text-portfolio-blue p-2"
-          onClick={toggleMenu}
-          aria-label="Toggle menu"
-        >
-          {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
-        </button>
+        <div className="md:hidden flex items-center gap-2">
+          <DarkModeToggle />
+          <button 
+            className="text-portfolio-blue dark:text-white p-2"
+            onClick={toggleMenu}
+            aria-label="Toggle menu"
+          >
+            {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
+          </button>
+        </div>
       </div>
 
       {/* Mobile Navigation */}
       {isMenuOpen && (
-        <nav className="md:hidden bg-white w-full border-t border-gray-100 py-4 px-6 flex flex-col space-y-4">
+        <nav className="md:hidden bg-white dark:bg-gray-800 w-full border-t border-gray-100 dark:border-gray-700 py-4 px-6 flex flex-col space-y-4">
           {navLinks.map(link => (
             <a 
               key={link.name}
               href={link.href}
-              className="font-medium py-2 hover:text-portfolio-purple transition-colors"
+              className="font-medium py-2 dark:text-gray-300 hover:text-portfolio-purple dark:hover:text-portfolio-purple transition-colors"
               onClick={() => setIsMenuOpen(false)}
             >
               {link.name}

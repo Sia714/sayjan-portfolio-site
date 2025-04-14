@@ -90,7 +90,7 @@
   }
   
   .section-title {
-    @apply text-3xl md:text-4xl font-bold mb-8 text-portfolio-blue relative pb-3 inline-block;
+    @apply text-3xl md:text-4xl font-bold mb-8 text-portfolio-blue dark:text-white relative pb-3 inline-block;
   }
   
   .section-title::after {
@@ -99,11 +99,11 @@
   }
   
   .skill-card {
-    @apply flex items-center gap-3 p-3 rounded-md bg-white shadow-sm border border-gray-100 hover:shadow-md transition-all;
+    @apply flex items-center gap-3 p-3 rounded-md bg-white dark:bg-gray-800 shadow-sm border border-gray-100 dark:border-gray-700 hover:shadow-md transition-all;
   }
   
   .timeline-item {
-    @apply relative pl-6 pb-8 border-l border-gray-200 ml-4;
+    @apply relative pl-6 pb-8 border-l border-gray-200 dark:border-gray-700 ml-4;
   }
   
   .timeline-item::before {
@@ -116,10 +116,36 @@
   }
   
   .project-card {
-    @apply bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-all duration-300;
+    @apply bg-white dark:bg-gray-800 rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-all duration-300;
   }
 }
 
 #root {
   @apply w-full max-w-full p-0 m-0;
+}
+
+/* Add styles for education and achievements sections */
+.education-section {
+  @apply bg-portfolio-education dark:bg-gray-800;
+}
+
+.achievements-section {
+  @apply bg-portfolio-achievements dark:bg-gray-700;
+}
+
+/* Card styles for dark mode */
+.card-light {
+  @apply bg-white dark:bg-gray-800 border border-gray-100 dark:border-gray-700;
+}
+
+.text-title {
+  @apply text-portfolio-blue dark:text-white;
+}
+
+.text-subtitle {
+  @apply text-gray-700 dark:text-gray-300;
+}
+
+.text-body {
+  @apply text-gray-600 dark:text-gray-400;
 }

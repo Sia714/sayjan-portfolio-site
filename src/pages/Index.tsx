@@ -26,13 +26,13 @@ const Index = () => {
   return (
     <div className="min-h-screen bg-background text-foreground dark:bg-gray-900 dark:text-gray-100">
       <Header />
-      <Hero />
-      <About />
-      <Skills />
-      <Experience />
-      <Projects />
-      <Education />
-      <Contact />
+      <div id="home"><Hero /></div>
+      <div id="about"><About /></div>
+      <div id="skills"><Skills /></div>
+      <div id="experience"><Experience /></div>
+      <div id="projects"><Projects /></div>
+      <div id="education"><Education /></div>
+      <div id="contact"><Contact /></div>
       <Footer />
     </div>
   );

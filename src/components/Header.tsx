@@ -19,6 +19,24 @@ const Header = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  // Handle smooth scrolling when clicking navigation links
+  const scrollToSection = (e: React.MouseEvent<HTMLAnchorElement>, targetId: string) => {
+    e.preventDefault();
+    const targetSection = document.querySelector(targetId);
+    
+    if (targetSection) {
+      // Close mobile menu if open
+      if (isMenuOpen) {
+        setIsMenuOpen(false);
+      }
+      
+      window.scrollTo({
+        top: targetSection.getBoundingClientRect().top + window.scrollY - 80, // -80 for header offset
+        behavior: 'smooth'
+      });
+    }
+  };
+
   const navLinks = [
     { name: 'Home', href: '#home' },
     { name: 'About', href: '#about' },
@@ -39,7 +57,11 @@ const Header = () => {
       )}
     >
       <div className="container mx-auto px-4 flex justify-between items-center">
-        <a href="#home" className="text-xl md:text-2xl font-bold text-portfolio-blue dark:text-white">
+        <a 
+          href="#home" 
+          className="text-xl md:text-2xl font-bold text-portfolio-blue dark:text-white"
+          onClick={(e) => scrollToSection(e, '#home')}
+        >
           Sayjan J Singh
         </a>
 
@@ -50,6 +72,7 @@ const Header = () => {
               key={link.name}
               href={link.href}
               className="font-medium dark:text-gray-300 hover:text-portfolio-purple dark:hover:text-portfolio-purple transition-colors"
+              onClick={(e) => scrollToSection(e, link.href)}
             >
               {link.name}
             </a>
@@ -78,7 +101,9 @@ const Header = () => {
               key={link.name}
               href={link.href}
               className="font-medium py-2 dark:text-gray-300 hover:text-portfolio-purple dark:hover:text-portfolio-purple transition-colors"
-              onClick={() => setIsMenuOpen(false)}
+              onClick={(e) => {
+                scrollToSection(e, link.href);
+              }}
             >
               {link.name}
             </a>

@@ -1,0 +1,85 @@
+
+import React, { useState, useEffect } from 'react';
+import { Menu, X } from 'lucide-react';
+import { cn } from '@/lib/utils';
+
+const Header = () => {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+
+  const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 10);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  const navLinks = [
+    { name: 'Home', href: '#home' },
+    { name: 'About', href: '#about' },
+    { name: 'Skills', href: '#skills' },
+    { name: 'Experience', href: '#experience' },
+    { name: 'Projects', href: '#projects' },
+    { name: 'Education', href: '#education' },
+    { name: 'Contact', href: '#contact' }
+  ];
+
+  return (
+    <header 
+      className={cn(
+        'fixed top-0 left-0 right-0 z-50 transition-all duration-300',
+        scrolled ? 'bg-white shadow-md py-2' : 'bg-transparent py-4'
+      )}
+    >
+      <div className="container mx-auto px-4 flex justify-between items-center">
+        <a href="#home" className="text-xl md:text-2xl font-bold text-portfolio-blue">
+          Sayjan J Singh
+        </a>
+
+        {/* Desktop Navigation */}
+        <nav className="hidden md:flex space-x-8 items-center">
+          {navLinks.map(link => (
+            <a 
+              key={link.name}
+              href={link.href}
+              className="font-medium hover:text-portfolio-purple transition-colors"
+            >
+              {link.name}
+            </a>
+          ))}
+        </nav>
+
+        {/* Mobile Menu Button */}
+        <button 
+          className="md:hidden text-portfolio-blue p-2"
+          onClick={toggleMenu}
+          aria-label="Toggle menu"
+        >
+          {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
+        </button>
+      </div>
+
+      {/* Mobile Navigation */}
+      {isMenuOpen && (
+        <nav className="md:hidden bg-white w-full border-t border-gray-100 py-4 px-6 flex flex-col space-y-4">
+          {navLinks.map(link => (
+            <a 
+              key={link.name}
+              href={link.href}
+              className="font-medium py-2 hover:text-portfolio-purple transition-colors"
+              onClick={() => setIsMenuOpen(false)}
+            >
+              {link.name}
+            </a>
+          ))}
+        </nav>
+      )}
+    </header>
+  );
+};
+
+export default Header;

@@ -10,9 +10,13 @@ const DarkModeToggle = () => {
     const savedTheme = localStorage.getItem('theme');
     const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
     
-    if (savedTheme === 'dark' || (!savedTheme && prefersDark)) {
+    const shouldEnableDark = savedTheme === 'dark' || (!savedTheme && prefersDark);
+    
+    if (shouldEnableDark) {
       setIsDarkMode(true);
       document.documentElement.classList.add('dark');
+    } else {
+      document.documentElement.classList.remove('dark');
     }
   }, []);
 

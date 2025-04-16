@@ -24,15 +24,15 @@ const Index = () => {
   }, []);
 
   return (
-    <div className="min-h-screen bg-background text-foreground dark:bg-gray-900 dark:text-gray-100">
+    <div className="min-h-screen bg-white dark:bg-gray-900 text-foreground transition-colors duration-300">
       <Header />
-      <div id="home"><Hero /></div>
-      <div id="about"><About /></div>
-      <div id="skills"><Skills /></div>
-      <div id="experience"><Experience /></div>
-      <div id="projects"><Projects /></div>
-      <div id="education"><Education /></div>
-      <div id="contact"><Contact /></div>
+      <div id="home" data-aos="fade-up" data-aos-duration="800"><Hero /></div>
+      <div id="about" data-aos="fade-up" data-aos-duration="800" data-aos-delay="100"><About /></div>
+      <div id="skills" data-aos="fade-up" data-aos-duration="800" data-aos-delay="100"><Skills /></div>
+      <div id="experience" data-aos="fade-up" data-aos-duration="800" data-aos-delay="100"><Experience /></div>
+      <div id="projects" data-aos="fade-up" data-aos-duration="800" data-aos-delay="100"><Projects /></div>
+      <div id="education" data-aos="fade-up" data-aos-duration="800" data-aos-delay="100"><Education /></div>
+      <div id="contact" data-aos="fade-up" data-aos-duration="800" data-aos-delay="100"><Contact /></div>
       <Footer />
     </div>
   );

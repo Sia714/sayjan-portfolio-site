@@ -34,10 +34,14 @@ const DarkModeToggle = () => {
   return (
     <button
       onClick={toggleDarkMode}
-      className="p-2 rounded-full bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-white transition-colors"
+      className="p-2 rounded-full bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-white transition-all duration-300 hover:scale-110"
       aria-label="Toggle dark mode"
     >
-      {isDarkMode ? <Sun size={20} /> : <Moon size={20} />}
+      {isDarkMode ? (
+        <Sun size={20} className="animate-scale-up" />
+      ) : (
+        <Moon size={20} className="animate-scale-up" />
+      )}
     </button>
   );
 };

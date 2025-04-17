@@ -16,7 +16,7 @@ const Header = () => {
     };
 
     window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    // return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
   // Handle smooth scrolling when clicking navigation links
@@ -77,12 +77,12 @@ const Header = () => {
               {link.name}
             </a>
           ))}
-          <DarkModeToggle />
+          {/* <DarkModeToggle /> */}
         </nav>
 
         {/* Mobile Menu Button */}
         <div className="md:hidden flex items-center gap-2">
-          <DarkModeToggle />
+          {/* <DarkModeToggle /> */}
           <button 
             className="text-portfolio-blue dark:text-white p-2"
             onClick={toggleMenu}

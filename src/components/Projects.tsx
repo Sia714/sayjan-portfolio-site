@@ -18,6 +18,7 @@ const Projects = () => {
       ],
       technologies: ["React", "Node.js", "Express.js", "MongoDB", "Tailwind CSS"],
       period: "March 2025 - Present",
+      codeurl:"https://github.com/Sia714/quiz_system",
       category: "web"
     },
     {
@@ -28,6 +29,7 @@ const Projects = () => {
       ],
       technologies: ["Spring Boot", "MySQL", "JPA", "React"],
       period: "January 2025",
+      codeurl:"https://github.com/Sia714/banking-management-system",
       category: "web"
     },
     {
@@ -40,6 +42,8 @@ const Projects = () => {
         "Added dynamic image loading and a dark mode toggle for enhanced user experience."
       ],
       technologies: ["Kotlin", "Android SDK", "Firebase Firestore", "MVVM"],
+      codeurl:"https://github.com/Sia714/PortfolioApp",
+
       period: "February 2025",
       category: "mobile"
     },
@@ -51,6 +55,7 @@ const Projects = () => {
         "Enhanced UX with custom radio buttons and a gradient fade effect for product descriptions."
       ],
       technologies: ["Kotlin", "Android SDK"],
+      codeurl:"https://github.com/Sia714/Android/tree/master/FlowerShop",
       period: "October 2024",
       category: "mobile"
     },
@@ -62,6 +67,8 @@ const Projects = () => {
         "Offered three difficulty levels and customizable maze sizes for a tailored user experience."
       ],
       technologies: ["HTML", "CSS", "JavaScript", "Bootstrap"],
+      codeurl:"https://github.com/Sia714/Maze-solver",
+
       period: "June 2024 - July 2024",
       category: "web"
     }
@@ -153,14 +160,16 @@ const ProjectCard = ({ project }) => {
         </div>
         
         <div className="flex gap-3">
-          <Button variant="ghost" size="sm" className="text-portfolio-blue hover:text-portfolio-purple">
-            <Github size={18} className="mr-1" />
-            Code
-          </Button>
-          <Button variant="outline" size="sm" className="text-portfolio-blue hover:border-portfolio-purple hover:text-portfolio-purple">
+        <a href={project.codeurl} target="_blank" rel="noopener noreferrer">
+      <Button variant="ghost" size="sm" className="text-portfolio-blue hover:text-portfolio-purple">
+        <Github size={18} className="mr-1" />
+        Code
+      </Button>
+    </a>
+          {/* <Button variant="outline" size="sm" className="text-portfolio-blue hover:border-portfolio-purple hover:text-portfolio-purple">
             <ExternalLink size={18} className="mr-1" />
             Demo
-          </Button>
+          </Button> */}
         </div>
       </CardFooter>
     </Card>
